@@ -57,6 +57,10 @@ export const SME_OUTPUT_FORMATS: SourceMapExplorerOutputFormat = {
  * - Utilities
  */
 export class SeedConfig {
+
+  DEV_CUSTOMER_SERVICE_BASE_URL = 'http://localhost:9999';
+  PROD_CUSTOMER_SERVICE_BASE_URL = 'http://localhost:9999';
+
   /**
    * The port where the application will run.
    * The default port is `5555`, which can be overriden by the  `--port` flag when running `npm start`.
@@ -176,7 +180,7 @@ export class SeedConfig {
    * `index.html`.
    * @type {string}
    */
-  APP_TITLE = 'Welcome to angular-seed!';
+  APP_TITLE = 'Learning Angular Professionally!';
 
   /**
    * Tracking ID.

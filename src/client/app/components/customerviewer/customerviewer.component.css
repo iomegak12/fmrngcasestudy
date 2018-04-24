@@ -1,0 +1,11 @@
+.panel-heading-class {
+    color: white;
+}
+
+.box:hover {
+    background-color: white;
+    cursor: pointer;
+    -moz-box-shadow: 13px 10px 29px #000000;
+    -webkit-box-shadow: 13px 10px 29px #000000;
+    box-shadow: 13px 10px 29px #000000;
+}
