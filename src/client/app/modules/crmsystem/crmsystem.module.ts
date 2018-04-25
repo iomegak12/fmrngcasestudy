@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { CrmSystemComponent } from "../../components/crmsystem/crmsystem.component";
@@ -10,17 +10,26 @@ import { CustomerViewerComponent } from "../../components/customerviewer/custome
 import { PhotoUrlPipe } from "../../pipes/photourl/photourl.pipe";
 import { SearchPanelComponent } from "../../components/searchpanel/searchpanel.component";
 import { WherePipe } from "../../pipes/where/where.pipe";
+import { CustomerModalViewerComponent } from "../../components/customermodalviewer/customermodalviewer.component";
+import { CustomerDetailViewerComponent } from "../../components/customerdetailviewer/customerdetailviewer.component";
+import { SymbolPipe } from "../../pipes/symbol/symbol.pipe";
+import { NewCustomerComponent } from "../../components/newcustomer/newcustomer.component";
+import { PushNotificationsModule } from "../pushnotifications/pushnotifications.module";
 
 @NgModule({
     imports: [
-        FormsModule,
+        FormsModule, ReactiveFormsModule,
+        PushNotificationsModule,
         CommonModule, HttpClientModule, crmSystemRouteDefinitions
     ],
     declarations: [
         CrmSystemComponent,
         CustomerViewerComponent,
-        PhotoUrlPipe, WherePipe,
-        SearchPanelComponent
+        CustomerModalViewerComponent,
+        CustomerDetailViewerComponent,
+        PhotoUrlPipe, WherePipe, SymbolPipe,
+        SearchPanelComponent,
+        NewCustomerComponent
     ],
     providers: [
         {

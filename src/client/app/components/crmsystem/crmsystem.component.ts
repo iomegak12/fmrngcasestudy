@@ -1,8 +1,9 @@
 import { ICustomerService, CUSTOMER_SERVICE_TOKEN } from "../../services/crmsystem/icrmsystem.service";
 import { InjectionToken, Inject, OnInit, Component } from "@angular/core";
 import { Customer } from "../../models/crmsystem/customer";
+import { IPushNotificationsService, PUSH_NOTIFICATIONS_SERVICE } from "../../services/pushnotifications/ipushnotifications.service";
 
-const INVALID_CUSTOMER_SERVICE = 'Invalid Customer Service Specified!';
+const INVALID_SERVICE_SPECIFICATIONS = 'Invalid Dependency Service Specifications Provided!';
 
 @Component({
     moduleId: module.id,
@@ -17,13 +18,31 @@ class CrmSystemComponent implements OnInit {
 
     constructor(
         @Inject(CUSTOMER_SERVICE_TOKEN)
-        private customerService: ICustomerService) {
+        private customerService: ICustomerService,
+        @Inject(PUSH_NOTIFICATIONS_SERVICE)
+        private pushNotificationsService: IPushNotificationsService) {
+        let validation = this.customerService && this.pushNotificationsService;
+
+        if (!validation)
+            throw new Error(INVALID_SERVICE_SPECIFICATIONS);
     }
 
     ngOnInit() {
-        if (!this.customerService) {
-            throw new Error(INVALID_CUSTOMER_SERVICE);
-        }
+        this.pushNotificationsService.registerCallback(
+            (notificationMessage: any) => {
+                if (notificationMessage) {
+                    let newCustomerRecord = new Customer(
+                        notificationMessage.id,
+                        notificationMessage.name, notificationMessage.address,
+                        notificationMessage.credit, notificationMessage.status,
+                        notificationMessage.email, notificationMessage.phone,
+                        notificationMessage.remarks);
+
+                    if (this.customers) {
+                        this.customers = [... this.customers, newCustomerRecord];
+                    }
+                }
+            });
 
         this.isLoading = true;
 

@@ -61,6 +61,12 @@ export class SeedConfig {
   DEV_CUSTOMER_SERVICE_BASE_URL = 'http://localhost:9999';
   PROD_CUSTOMER_SERVICE_BASE_URL = 'http://localhost:9999';
 
+  DEV_PUSH_NOTIFICATIONS_SERVICE_URL = 'http://localhost:9999';
+  PROD_PUSH_NOTIFICATIONS_SERVICE_URL = 'http://localhost:9999';
+
+  DEV_AUTH_SERVICE_BASE_URL = 'http://localhost:9999';
+  PROD_AUTH_SERVICE_BASE_URL = 'http://localhost:9999';
+
   /**
    * The port where the application will run.
    * The default port is `5555`, which can be overriden by the  `--port` flag when running `npm start`.

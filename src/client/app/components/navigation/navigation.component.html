@@ -2,13 +2,17 @@
     <li class="active">
         <a routerLink='home'>Home</a>
     </li>
-    
+
     <li>
         <a routerLink='about-us'>About</a>
     </li>
 
-    <li>
+    <li *ngIf='isAuthenticated'>
         <a routerLink='crm-system'>Customers</a>
+    </li>
+
+    <li *ngIf='isAuthenticated'>
+        <a routerLink='new-customer'>New Customer</a>
     </li>
 
     <li class="dropdown">
@@ -24,10 +28,20 @@
             </li>
         </ul>
     </li>
+
     <li>
         <a routerLink='contact-us'>Contact</a>
     </li>
-    <li>
-        <a class="btn" href="signin.html">SIGN IN / SIGN UP</a>
+
+    <li *ngIf='!isAuthenticated'>
+        <a class="btn" routerLink='login'>SIGN IN / SIGN UP</a>
     </li>
+
+    <li *ngIf='isAuthenticated'>
+        <span class='welcome-login text-center'>
+            Welcome {{ userName }},
+            <a class="btn" (click)='logout()'>Signout</a>
+        </span>
+    </li>
+
 </ul>

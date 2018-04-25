@@ -16,9 +16,11 @@ import { VacanciesComponent } from '../../components/vacancies/vacancies.compone
 import { ContactMapComponent } from '../../components/contactmap/contactmap.component';
 import { sharedRouteDefinitions } from '../../routing/shared/shared.routes';
 import { ContactAddressComponent } from '../../components/contactaddress/contactaddress.component';
+import { SecurityModule } from '../security/security.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-    imports: [sharedRouteDefinitions],
+    imports: [CommonModule, sharedRouteDefinitions, SecurityModule],
     declarations: [
         HeaderComponent, NavigationComponent,
         FooterComponent, FollowmeComponent,

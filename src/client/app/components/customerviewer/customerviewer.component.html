@@ -17,10 +17,13 @@
                 </p>
 
                 <p>
-                    <a href="#" class="btn btn-success" role="button">Details</a>
+                    <a href="#" class="btn btn-success" data-toggle='modal' 
+                        [attr.data-target]="'#customer' + customerInfo.id" role="button">Details</a>
                     <a href="#" class="btn btn-danger" role="button">Dashboard</a>
                 </p>
             </div>
         </div>
     </div>
 </div>
+
+<customermodalviewer-component [customerModel]='customerInfo'></customermodalviewer-component>
